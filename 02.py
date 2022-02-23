@@ -13,6 +13,8 @@ def pressSpace(event):
         root.after(5, lambda e=event: pressSpace(e))
     else:
         countAnimation = 0
+        # Вновь задаем реакцию на нажатие клавиши
+        cnv.bind("<space>", pressSpace)
 
 
 root = Tk()
