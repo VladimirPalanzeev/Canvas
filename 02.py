@@ -2,9 +2,13 @@ from tkinter import *
 from time import sleep
 
 def pressSpace(event):
-    for i in range(200):
-        # sleep(1)
-        cnv.move(evil, 2, 0)
+    global countAnimation
+    countAnimation += 1
+    if countAnimation < 20:
+        cnv.move(evil, 1, 0)
+        root.after(5, lambda e=event: pressSpace(e))
+    else:
+        countAnimation = 0
 
 
 root = Tk()
@@ -25,4 +29,6 @@ evil = cnv.create_image(120, 240, image=evilCircle)
 # Назначаем на пробел метод pressSpace
 cnv.bind("<space>", pressSpace)
 
+# Количество рекурсий
+countAnimation = 0
 root.mainloop()
