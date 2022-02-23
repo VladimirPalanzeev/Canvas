@@ -4,6 +4,10 @@ from time import sleep
 def pressSpace(event):
     global countAnimation
     countAnimation += 1
+
+    # Не обрабатываем пробел
+    cnv.unbind("<space>")
+
     if countAnimation < 20:
         cnv.move(evil, 1, 0)
         root.after(5, lambda e=event: pressSpace(e))
