@@ -3,6 +3,7 @@ from time import sleep
 
 def pressSpace(event):
     for i in range(200):
+        # sleep(1)
         cnv.move(evil, 2, 0)
 
 
