@@ -35,5 +35,34 @@ back = PhotoImage(file="imageForCanvas/background.png")
 evilCircle = PhotoImage(file="imageForCanvas/circle.png")
 playerSquare = PhotoImage(file="imageForCanvas/square.png")
 
-# Устанавливаем "нижним слоем"  д
+# Устанавливаем "нижним слоем" фоновое изображение
+cnv.create_image(WIDTH // 2, HEIGHT // 2, image=back)
+
+# Смещение вражеского круга
+vectorX = 5
+vectorY = 5
+
+# Скорость движения квадрата
+playerSpeed = 3
+
+# Создаём и получаем ссылки на объекты
+evil = cnv.create_image(32, 32, image=evilCircle)
+player = cnv.create_image(WIDTH // 2, HEIGHT // 2, image=playerSquare)
+
+# Зададим коды кнопок в константах для повышения читаемости кода
+UPKEY = 0
+DOWNKEY = 1
+LEFTKEY = 2
+RIGHTKEY = 3
+
+# Назначаем клавиши управления курсором
+
+cnv.bind("<Up>", lambda e, x=UPKEY: move(x))
+cnv.bind("<Down>", lambda e, x=DOWNKEY: move(x))
+cnv.bind("<Left>", lambda e, x=LEFTKEY: move(x))
+cnv.bind("<Right>", lambda e, x=RIGHTKEY: move(x))
+
+# Запускаем движение вражеского круга
+evilAfter = root.after(30, evilMove())
+
 root.mainloop()
